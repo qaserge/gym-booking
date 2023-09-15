@@ -9,8 +9,10 @@ class BookingController extends Controller
 {
     public function create()
     {
-        $scheduledClasses = ScheduledClass::where('date_time', '>', now())
+        $scheduledClasses = ScheduledClass::upcoming() // upcoming is Query Scopes
             ->with('classType', 'instructor') // Eager loading
+            // ->whereDoesntHave('members', function($query){ $query->where('user_id', auth()->user()->id); }) // bed practises, better to use Query Scopes
+            ->notBooked()
             ->oldest()->get();
 
         return view('member.book')->with('scheduledClasses', $scheduledClasses);
@@ -25,7 +27,7 @@ class BookingController extends Controller
 
     public function index()
     {
-        $bookings = auth()->user()->bookings()->where('date_time', '>', now())->get();
+        $bookings = auth()->user()->bookings()->upcoming()->get();
 
         return view('member.upcoming')->with('bookings', $bookings);
     }
