@@ -13,7 +13,7 @@
                   <div class="py-6">
                      <div class="flex gap-6 justify-between">
                         <div>
-                           <p class="text-2xl font-bold text-purple-700">{{ $class->classType->name }}</p>
+                           <p class="text-2xl font-bold text-indigo-700">{{ $class->classType->name }}</p>
                            <span class="text-slate-600 text-sm">{{ $class->classType->minutes }} minutes</span>
                         </div>
                         <div class="text-right flex-shrink-0">
