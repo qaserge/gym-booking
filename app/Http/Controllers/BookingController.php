@@ -13,7 +13,8 @@ class BookingController extends Controller
             ->with('classType', 'instructor') // Eager loading
             // ->whereDoesntHave('members', function($query){ $query->where('user_id', auth()->user()->id); }) // bed practises, better to use Query Scopes
             ->notBooked()
-            ->oldest()->get();
+            ->oldest('date_time')
+            ->get();
 
         return view('member.book')->with('scheduledClasses', $scheduledClasses);
     }
