@@ -1,66 +1,40 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Gym Booking App
 
-## About Laravel
+The Gym Booking App is a robust and feature-rich application developed using the Laravel framework. It caters to the needs of three distinct types of users: instructors, members, and administrators. This application streamlines the process of scheduling and managing fitness classes.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Instructor Functionality:<br />
+Instructors can schedule fitness classes by specifying the type of class, date, and time.<br />
+They have access to a dashboard to view all their upcoming classes.<br />
+Instructors can cancel scheduled classes when necessary.<br />
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Member Functionality:<br />
+Members can browse and view all scheduled fitness classes.<br />
+They have the option to select and book available slots in their preferred classes.<br />
+Members can also keep track of all their upcoming bookings and cancel them if needed.<br />
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Real-time Notifications:<br />
+In the event of an instructor canceling a scheduled class, an automatic email notification is sent to all members who made a booking for that class. <br />
 
-## Learning Laravel
+Technologies and Techniques Used:<br />
+User Roles: The application implements user roles to manage different levels of access and functionality for instructors, members, and admins.<br />
+Custom Middleware: Middleware is utilized to customize and enhance the HTTP request-handling process.<br />
+Gates and Policies: Laravel's authorization system is leveraged to control access to specific actions and resources.<br />
+Database Seeding and Factories: To generate initial data and test data for the database.<br />
+Many-to-Many Relationships: Complex relationships between classes, instructors, and members are efficiently managed.<br />
+Eager Loading: Enhances performance by efficiently retrieving related data.<br />
+Query Scopes: Custom query scopes are employed to simplify complex database queries.<br />
+Custom Commands and Logs: Custom Artisan commands are used for various tasks, and application logs are maintained.<br />
+Events and Listeners: Events and listeners handle actions like sending email notifications.<br />
+Mail Notifications: Laravel's mail notification system ensures effective communication.<br />
+Jobs and Queues: Background processing and queuing are used for tasks like sending email notifications.<br />
+Task Scheduling: Scheduled tasks are set up for routine maintenance and notifications.<br />
+Testing: HTTP and database testing.<br />
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+![Screenshot 2023-09-15 121458](https://github.com/qaserge/gym-booking/assets/45569665/a9d02e97-3420-47ca-9fa6-41e1b9c0bf89)
+![image](https://github.com/qaserge/gym-booking/assets/45569665/4bf646c3-5286-4845-bbe7-64cacbafd307)
+![image](https://github.com/qaserge/gym-booking/assets/45569665/9d607435-eeb5-4136-a589-39bb137e82a4)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
