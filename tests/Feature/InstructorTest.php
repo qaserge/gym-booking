@@ -12,6 +12,8 @@ use Tests\TestCase;
 
 class InstructorTest extends TestCase
 {
+    use RefreshDatabase;
+
     public function test_instructor_is_redirected_to_instructor_dashboard()
     {
         $user = User::factory()->create([
@@ -42,31 +44,34 @@ class InstructorTest extends TestCase
             ]);
 
         //Then 
+        $this->assertDatabaseHas('scheduled_classes', [
+            'class_type_id' => ClassType::first()->id,
+            'date_time' => '2023-09-25 10:00:00'
+        ]);
+
         $response->assertRedirectToRoute('schedule.index');
     }
 
-    public function test_instructor_can_delete_a_class_schedule()
+    public function test_instructor_can_cancel_class()
     {
-        //Given
+        // Given
         $user = User::factory()->create([
             'role' => 'instructor'
         ]);
         $this->seed(ClassTypeSeeder::class);
-
-        $response = $this->actingAs($user)
-            ->post('instructor/schedule', [
-                'class_type_id' => ClassType::first()->id,
-                'date' => '2023-09-29', // Другая дата
-                'time' => '11:00:00'    // Другое время
-            ]);
-
-        $schedule = ScheduledClass::latest()->first();
+        $scheduledClass = ScheduledClass::create([
+            'instructor_id' => $user->id,
+            'class_type_id' => ClassType::first()->id,
+            'date_time' => '2023-09-20 10:00:00'
+        ]);
 
         // When
         $response = $this->actingAs($user)
-            ->delete("instructor/schedule/{$schedule->id}");
+            ->delete('/instructor/schedule/' . $scheduledClass->id);
 
         // Then
-        $response->assertRedirectToRoute('schedule.index');
+        $this->assertDatabaseMissing('scheduled_classes', [
+            'id' => $scheduledClass->id
+        ]);
     }
 }
